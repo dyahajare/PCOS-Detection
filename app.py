@@ -60,6 +60,6 @@ def predict():
     result = 'Oui' if prediction[0] == 1 else 'Non'
 
     return render_template('result.html', result=result, certainty=certainty)
-
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Default to 5000 if PORT is not set
+    app.run(host='0.0.0.0', port=port, debug=False)
