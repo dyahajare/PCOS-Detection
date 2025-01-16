@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import joblib
+import os  
 
 app = Flask(__name__)
 
-
+# Load the pre-trained model
 model = joblib.load('pcos_rf.pkl')
 
-
+# Define the expected columns for input
 expected_columns = [
     'Skin darkening (Y/N)', 'hair growth(Y/N)', 'Weight gain(Y/N)', 'Cycle(R/I)', 
     'Fast food (Y/N)', 'Pimples(Y/N)', 'Hair loss(Y/N)', 'Weight (Kg)', 
@@ -15,8 +16,8 @@ expected_columns = [
     'Cycle length(days)', ' Age (yrs)', 'Marriage Status (Yrs)'
 ]
 
-
 def map_yes_no(value):
+    """Maps yes/no inputs to 1/0."""
     if value.lower() in ['oui', 'y']:
         return 1
     elif value.lower() in ['non', 'n']:
@@ -25,11 +26,14 @@ def map_yes_no(value):
 
 @app.route('/', methods=['GET'])
 def home():
+    """Renders the home page."""
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    """Handles the prediction request and renders the result."""
    
+    # Collect form data and map it
     form_data = {
         'Skin darkening (Y/N)': map_yes_no(request.form['skin_darkening']),
         'hair growth(Y/N)': map_yes_no(request.form['hair_growth']),
@@ -48,18 +52,23 @@ def predict():
         'Marriage Status (Yrs)': float(request.form['marriage']),
     }
 
-
+    # Convert form data to a DataFrame
     input_data = pd.DataFrame([form_data])
     input_data = input_data[expected_columns]
 
- 
+    # Make prediction using the trained model
     prediction = model.predict(input_data)
     prediction_proba = model.predict_proba(input_data)   
     certainty = prediction_proba[0][1] * 100  
 
     result = 'Oui' if prediction[0] == 1 else 'Non'
 
+    # Return the result page with prediction and certainty
     return render_template('result.html', result=result, certainty=certainty)
+
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Default to 5000 if PORT is not set
+    # Get the PORT environment variable (default to 5000 if not set)
+    port = int(os.environ.get("PORT", 5000))
+    
+    # Run the app on all interfaces (0.0.0.0) and the dynamic port
     app.run(host='0.0.0.0', port=port, debug=False)
