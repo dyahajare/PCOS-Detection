@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>DETECTION DU SOPK</title>
+    <link rel="icon" href="{{ url_for('static', filename='ok.jpg') }}" type="image/x-icon">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="background">
+        <h1 class="title">La détection du SOPK</h1>
+        <div class="forme">
+            <form action="/predict" method="POST">
+                <label for="skinDarkening" class="ec1">Avez-vous remarqué un assombrissement de la peau ?</label>
+                <select class="form-control" id="skinDarkening" name="skin_darkening" required>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+
+                <label for="hairgrowth" class="ec1">Avez-vous remarqué une pousse de poils sur le corps ou le visage ?</label>
+                <select class="form-control" id="hairgrowth" name="hair_growth" required>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+
+                <label for="weightGain" class="ec1">Avez-vous remarqué une prise de poids ?</label>
+                <select class="form-control" id="weightGain" name="weight_gain" required>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+
+                <label for="cycle" class="ec1">Votre cycle est-il régulier ou irrégulier ?</label>
+                <select class="form-control" id="cycle" name="cycle" required>
+                    <option value="régulier">Régulier</option>
+                    <option value="irrégulier">Irrégulier</option>
+                </select>
+
+                <label for="fastFood" class="ec1">Consommez-vous du fast-food ?</label>
+                <select class="form-control" id="fastFood" name="fast_food" required>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+
+                <label for="pimples" class="ec1">Avez-vous des boutons (Acné) ?</label>
+                <select class="form-control" id="pimples" name="pimples" required>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+
+                <label for="hairLoss" class="ec1">Avez-vous une perte de cheveux ?</label>
+                <select class="form-control" id="hairLoss" name="hair_loss" required>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+
+                <label for="weight" class="ec1">Poids en kg</label>
+                <input class="form-control" type="number" id="weight" name="weight" step="0.1" placeholder="Entrez votre poids en kg" required>
+
+                <label for="waist" class="ec1">Mesure du tour de taille en pouces</label>
+                <input class="form-control" type="number" id="waist" name="waist" step="0.1" placeholder="Entrez la mesure de votre tour de taille en pouces" required>
+
+                <label for="hips" class="ec1">Hanches en pouces</label>
+                <input class="form-control" type="number" id="hips" name="hips" step="0.1" placeholder="Entrez vos hanches en pouces" required>
+
+                <label for="exercise" class="ec1">Faites-vous de l'exercice régulièrement ?</label>
+                <select class="form-control" id="exercise" name="exercise" required>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+
+                <label for="pregnant" class="ec1">Êtes-vous enceinte ?</label>
+                <select class="form-control" id="pregnant" name="pregnant" required>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
+                <label for="cycle_length" class="ec1">La durée de cycle</label>
+                <input class="form-control" type="number" id="cycle_length" name="cycle_length" step="0.1" placeholder="Entrez votre durée de cycle" required>
+
+                
+                <label for="marriage" class="ec1">Status de marriage (nombre des annees)</label>
+                <input class="form-control" type="number" id="marriage" name="marriage" step="0.1" placeholder="Entrez votre statu de marriage" required>
+                
+                <label for="age" class="ec1">Age</label>
+                <input class="form-control" type="number" id="age" name="age" step="0.1" placeholder="Entrez votre age" required>
+
+                <button type="submit" class="btn btn-primary">Soumettre</button>  
+            </form>
+        </div>
+    </div>
+</body>
+</html>

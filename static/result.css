@@ -1,0 +1,36 @@
+.background {
+    background-image: url('./istockphoto-2185749472-612x612.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Assure que la section prend au moins toute la hauteur de la fenêtre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Permet au contenu de se disposer correctement */
+}
+.p2{
+    margin-left: 60px;
+    margin-right: 60px;
+    color: rgb(242, 239, 241);
+    
+    
+}
+.p1 {
+    margin: 0;
+    padding: 20px;
+    color: rgb(231, 25, 196);
+    font-size: 2rem;
+    border: 2px solid white; 
+    background-color: white;  
+    border-radius: 10px;      
+    text-align: center;       
+}
+
+.result{
+    margin-left: 60px;
+    margin-right: 60px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    font-size:x-large;
+}

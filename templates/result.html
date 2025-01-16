@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Résultat de la détection du SOPK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='ok.jpg') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="background">
+    <h1 class="p1">Résultat de la détection du SOPK</h1>
+    <p class="result">Le résultat de votre test pour le SOPK est : {{ result }}</p>
+    <p class="p2">Certitude du test : {{ certainty | round(2) }}%</p>
+    <p class="p2">il est important de noter que ce résultat n'est pas un diagnostic médical définitif. Il est fortement recommandé de consulter un professionnel de la santé pour un avis médical complet et des conseils adaptés à votre situation. Si le test indique "Oui", sachez que vous n'êtes pas seule. Nous sommes avec vous, et il existe des ressources et un soutien pour vous accompagner tout au long de ce parcours. Prenez soin de vous et n'hésitez pas à demander de l'aide, vous méritez d'être écoutée et soutenue</p>
+    <a href="https://www.askpcos.org/">ASK PCOS!</a>
+ <a href="/">Retour à l'accueil</a>
+    
+    </div>
+</body>
+</html>
